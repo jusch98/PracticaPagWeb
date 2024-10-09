@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busqueda</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif; /* Added a fallback font */
+        }
+         
+        .flex-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 10px;
+            box-shadow: 0 0 14px #1e1e1e;
+        }
+
+        .link-pretty {
+            text-decoration: none;
+            color: black;
+        }
+
+        .link-pretty:hover {
+            text-decoration: underline;
+        }
+
+        .Imagenes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Updated to make it more consistent */
+            grid-template-rows: auto; /* Rows will adjust automatically */
+            justify-content: center;
+            gap: 20px; /* Added gap for better spacing */
+            padding: 10px; /* Added padding for aesthetics */
+            max-width: 900px;
+            margin: auto;
+        }
+
+        img {
+            margin-top: 5%;
+            width: 100%;
+            box-shadow: 0 0 4px #1e1e1e;
+            border-radius: 0; /* Initial state as square */
+            transition: border-radius 0.5s; /* Smooth transition for border radius */
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        /* Estilo de los botones */
+        .btn {
+            background-color: #2f4e30;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .btn:hover {
+            background-color: #3f5d40; /* Changed hover color for visibility */
+        }
+
+        /* Media Queries para dispositivos móviles */
+        @media (max-width: 768px) {
+            .Imagenes {
+                grid-template-columns: 1fr; /* Cambia a una columna en pantallas más pequeñas */
+            }
+        }
+
+        footer {
+            width: 100%; /* Set footer width to 100% for better responsiveness */
+            height: 100px;
+            margin-top: 10px;
+            background-color: #1e1e1e;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="flex-container">
+        <div class="item">
+            <a class="link-pretty" href="https://www.coca-cola.com/es/es" target="_blank">Home</a>
+        </div>
+        <div class="item">
+            <a class="link-pretty" href="https://es.wikipedia.org/wiki/Coca-Cola" target="_blank">About</a>
+        </div>
+        <div class="item">
+            <a class="link-pretty" href="https://www.coca-cola.com/es/es" target="_blank">Services</a>
+        </div>
+        <div class="item">Contact</div>
+    </div>
+
+    <!-- Botones para cambiar el diseño de la cuadrícula -->
+    <div style="text-align: center; margin-top: 20px;">
+        <button class="btn" onclick="changeColumns(2)">Cambiar a 2 columnas</button>
+        <button class="btn" onclick="changeCirculo()">Cambiar imágenes a círculos</button>
+        <button class="btn" onclick="changeNormal()">Cambia las imágenes a cuadrados</button>
+        <button class="btn" onclick="resetColumns()">Restablecer columnas</button>
+    </div>
+
+    <div class="Imagenes">
+        <img src="img/istockphoto-1317323736-612x612.jpg" alt="Imagen 1">
+        <img src="img/pexels-8moments-1183099.jpg" >
+        <img src="img/pexels-arthousestudio-4534200.jpg" >
+        <img src="img/pexels-eberhardgross-1367192.jpg">
+        <img src="img/pexels-eberhardgross-534164.jpg" >
+        <img src="img/pexels-elias-tigiser-411757-2757549.jpg">
+        <img src="img/pexels-francesco-ungaro-2835436.jpg" >
+        <img src="img/pexels-veeterzy-39811.jpg" >
+        <img src="img/pexels-valdemaras-d-784301-1647962.jpg">
+    </div>
+    
+    <script>
+        // Función para cambiar el número de columnas en la cuadrícula
+        function changeColumns(num) {
+            const imagenesContainer = document.querySelector('.Imagenes');
+            imagenesContainer.style.gridTemplateColumns = `repeat(${num}, 1fr)`;
+        }
+
+        // Función para restablecer las columnas a 3
+        function resetColumns() {
+            changeColumns(3);
+        }
+
+        // Funcion para que las imagenes sean circulares 
+        function changeCirculo() {
+            const imagenes = document.querySelectorAll('.Imagenes img');
+            imagenes.forEach(img => {
+                img.style.borderRadius = '50%'; // Changed to 50% for a circle
+            });
+        }
+
+        // Funcion para que las imagenes vuelvan a ser cuadradas 
+        function changeNormal() {
+            const imagenes = document.querySelectorAll('.Imagenes img');
+            imagenes.forEach(img => {
+                img.style.borderRadius = '0'; 
+            });
+        }
+
+        // Función para cambiar la imagen al hacer clic
+        function changeImage(imgElement, newImageSrc) {
+            imgElement.src = newImageSrc; // Cambia la imagen al nuevo src proporcionado
+        }
+    </script>
+</body>
+
+<footer>
+
+</footer>
+</html>
